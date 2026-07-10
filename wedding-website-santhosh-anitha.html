@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Santhoshkumar &amp; Anitha — Wedding</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Cinzel:wght@500;600;700&family=Jost:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FFF6E4;
+      --maroon: #7A1F35;
+      --maroon-deep: #4E1220;
+      --gold: #C9A227;
+      --gold-bright: #E7C15C;
+      --teal: #0E4F49;
+      --ink: #3A1620;
+      --line: rgba(122, 31, 53, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    .display {
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+      color: var(--maroon);
+      letter-spacing: 0.01em;
+      margin: 0;
+    }
+
+    .eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-size: 12.5px;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--teal);
+      font-weight: 500;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: radial-gradient(circle, var(--gold) 1.5px, transparent 1.5px);
+      background-size: 26px 26px;
+    }
+
+    section {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ---------- SCROLL PROGRESS ---------- */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--gold), var(--maroon));
+      z-index: 200;
+      transition: width 0.1s linear;
+    }
+
+    /* ---------- NAV ---------- */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 5vw;
+      background: rgba(255, 246, 228, 0.92);
+      backdrop-filter: blur(6px);
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    nav.scrolled {
+      border-bottom-color: var(--gold);
+    }
+
+    .nav-mark {
+      font-family: 'Cinzel', serif;
+      font-size: 19px;
+      color: var(--maroon);
+      letter-spacing: 0.1em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-family: 'Jost', sans-serif;
+      font-size: 12.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--ink);
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.35s ease;
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .nav-toggle {
+      display: none;
+    }
+
+    @media (max-width: 820px) {
+      .nav-links {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--cream);
+        flex-direction: column;
+        align-items: center;
+        padding: 26px 0 32px;
+        gap: 18px;
+        border-bottom: 2px solid var(--gold);
+        transform: translateY(-140%);
+        transition: transform 0.4s ease;
+      }
+
+      .nav-links.open {
+        transform: translateY(0);
+      }
+
+      .nav-toggle {
+        display: block;
+        background: none;
+        border: 1px solid var(--maroon);
+        border-radius: 3px;
+        padding: 6px 14px;
+        font-family: 'Jost', sans-serif;
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--maroon);
+        cursor: pointer;
+      }
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 130px 6vw 80px;
+      position: relative;
+    }
+
+    .hero-frame {
+      position: absolute;
+      inset: 26px;
+      border: 2px solid var(--gold);
+      pointer-events: none;
+    }
+
+    .hero-frame::before,
+    .hero-frame::after {
+      content: "";
+      position: absolute;
+      width: 34px;
+      height: 34px;
+      border: 2px solid var(--gold);
+    }
+
+    .hero-frame::before {
+      top: -2px;
+      left: -2px;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .hero-frame::after {
+      bottom: -2px;
+      right: -2px;
+      border-left: none;
+      border-top: none;
+    }
+
+    @media (max-width: 700px) {
+      .hero-frame {
+        inset: 12px;
+      }
+    }
+
+    .arch {
+      width: min(50vw, 260px);
+      margin-bottom: 6px;
+    }
+
+    .hero .eyebrow {
+      margin: 18px 0;
+    }
+
+    .hero-names {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 600;
+      font-size: clamp(46px, 7.4vw, 92px);
+      color: var(--maroon);
+      line-height: 1.06;
+    }
+
+    .hero-names .amp {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-style: normal;
+      color: var(--gold);
+      font-size: 0.6em;
+      margin: 0 14px;
+      vertical-align: middle;
+    }
+
+    .hero-sub {
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink);
+      opacity: 0.65;
+      margin: 14px 0 30px;
+    }
+
+    .hero-date {
+      font-family: 'Jost', sans-serif;
+      font-size: 15px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin: 0 0 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 34px;
+      font-family: 'Jost', sans-serif;
+      font-size: 12.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--cream);
+      background: var(--maroon);
+      border: 1px solid var(--maroon);
+      cursor: pointer;
+      transition: background 0.35s ease, color 0.35s ease, transform 0.3s ease;
+    }
+
+    .btn:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--maroon-deep);
+      transform: translateY(-2px);
+    }
+
+    /* ---------- ORNAMENT DIVIDER ---------- */
+    .ornament-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 6px 0;
+    }
+
+    .ornament-divider .line {
+      height: 1px;
+      width: 90px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.9s cubic-bezier(.2, .7, .2, 1);
+    }
+
+    .ornament-divider.in .line {
+      transform: scaleX(1);
+    }
+
+    .ornament-divider .line.right {
+      transform-origin: left;
+    }
+
+    .ornament-divider .line.left {
+      transform-origin: right;
+    }
+
+    .ornament-divider svg {
+      width: 26px;
+      height: 26px;
+      opacity: 0;
+      transform: scale(0) rotate(-90deg);
+      transition: opacity 0.6s ease 0.3s, transform 0.6s cubic-bezier(.2, .7, .2, 1) 0.3s;
+    }
+
+    .ornament-divider.in svg {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+
+    @media (max-width:560px) {
+      .ornament-divider .line {
+        width: 50px;
+      }
+    }
+
+    /* ---------- WRAP ---------- */
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 100px 6vw;
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-head .eyebrow {
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(34px, 4.2vw, 50px);
+      position: relative;
+      display: inline-block;
+      padding-bottom: 14px;
+    }
+
+    .section-head h2::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      height: 2px;
+      width: 0;
+      background: var(--gold);
+      transform: translateX(-50%);
+      transition: width 1s cubic-bezier(.2, .7, .2, 1) 0.15s;
+    }
+
+    .section-head.in h2::after {
+      width: 70px;
+    }
+
+    /* ---------- STORY ---------- */
+    .story {
+      background: var(--maroon);
+      color: var(--cream);
+    }
+
+    .story .eyebrow {
+      color: var(--gold-bright);
+    }
+
+    .story h2 {
+      color: var(--cream);
+    }
+
+    .story .section-head h2::after {
+      background: var(--gold-bright);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .portrait {
+      aspect-ratio: 4/5;
+      border: 3px solid var(--gold);
+      padding: 10px;
+    }
+
+    .portrait-inner {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #8E2A44, #5C1526 60%, #4E1220);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: rgba(255, 246, 228, 0.65);
+      font-size: 15px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .story-text p {
+      color: rgba(255, 246, 228, 0.9);
+      margin: 0 0 18px;
+    }
+
+    .story-text .signoff {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 600;
+      font-size: 26px;
+      color: var(--gold-bright);
+      margin-top: 20px;
+    }
+
+    @media (max-width:800px) {
+      .story-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ---------- DETAILS / SCHEDULE ---------- */
+    .day-label {
+      text-align: center;
+      margin: 0 0 30px;
+    }
+
+    .day-label span {
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      color: var(--maroon);
+      border: 1px solid var(--gold);
+      padding: 8px 26px;
+      display: inline-block;
+      background: rgba(201, 162, 39, 0.08);
+    }
+
+    .schedule-list {
+      max-width: 640px;
+      margin: 0 auto 70px;
+      position: relative;
+    }
+
+    .schedule-list:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .schedule-list::before {
+      content: "";
+      position: absolute;
+      left: 96px;
+      top: 6px;
+      bottom: 6px;
+      width: 1px;
+      background: var(--line);
+    }
+
+    @media (max-width:640px) {
+      .schedule-list::before {
+        left: 64px;
+      }
+    }
+
+    .schedule-item {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 28px;
+      padding: 22px 0;
+    }
+
+    @media (max-width:640px) {
+      .schedule-item {
+        grid-template-columns: 64px 1fr;
+        gap: 18px;
+      }
+    }
+
+    .schedule-time {
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      color: var(--maroon);
+      text-align: right;
+      padding-top: 4px;
+    }
+
+    .schedule-node {
+      position: relative;
+    }
+
+    .schedule-node::before {
+      content: "";
+      position: absolute;
+      left: -33px;
+      top: 9px;
+      width: 11px;
+      height: 11px;
+      background: var(--cream);
+      border: 2px solid var(--gold);
+      transform: rotate(45deg);
+    }
+
+    @media (max-width:640px) {
+      .schedule-node::before {
+        left: -37px;
+      }
+    }
+
+    .schedule-node h3 {
+      margin: 0 0 4px;
+      font-size: 25px;
+    }
+
+    .schedule-node p {
+      margin: 0;
+      color: var(--ink);
+      opacity: 0.75;
+      font-size: 16px;
+    }
+
+    /* ---------- VENUE ---------- */
+    .venue {
+      background: var(--teal);
+      color: var(--cream);
+    }
+
+    .venue .eyebrow {
+      color: var(--gold-bright);
+    }
+
+    .venue h2 {
+      color: var(--cream);
+    }
+
+    .venue .section-head h2::after {
+      background: var(--gold-bright);
+    }
+
+    .venue-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: stretch;
+    }
+
+    @media (max-width:800px) {
+      .venue-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .venue-info {
+      border: 1px solid rgba(231, 193, 92, 0.4);
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: rgba(255, 246, 228, 0.05);
+    }
+
+    .venue-info h3 {
+      color: var(--gold-bright);
+      font-size: 28px;
+      margin: 0 0 14px;
+    }
+
+    .venue-info p {
+      margin: 0 0 24px;
+      color: rgba(255, 246, 228, 0.88);
+      font-size: 17px;
+    }
+
+    .venue-info .btn {
+      align-self: flex-start;
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--maroon-deep);
+    }
+
+    .venue-info .btn:hover {
+      background: var(--gold-bright);
+      border-color: var(--gold-bright);
+    }
+
+    .map-frame {
+      border: 2px solid var(--gold);
+      overflow: hidden;
+      min-height: 320px;
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 320px;
+      border: 0;
+      display: block;
+      filter: sepia(8%) saturate(105%);
+    }
+
+    /* ---------- GALLERY ---------- */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    @media (max-width: 760px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .gallery-grid figure {
+      margin: 0;
+      border: 3px solid var(--gold);
+      padding: 14px;
+      background: #fff;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.4s cubic-bezier(.2, .7, .2, 1), box-shadow 0.4s ease;
+    }
+
+    .gallery-grid figure:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 26px -14px rgba(122, 31, 53, 0.5);
+    }
+
+    .gallery-grid svg {
+      width: 78%;
+      height: 78%;
+    }
+
+    .gallery-note {
+      text-align: center;
+      margin-top: 40px;
+      color: var(--ink);
+      opacity: 0.6;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 17px;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      text-align: center;
+      padding: 70px 6vw 50px;
+      background: var(--maroon-deep);
+      color: var(--cream);
+    }
+
+    footer .eyebrow {
+      color: var(--gold-bright);
+      margin-bottom: 14px;
+    }
+
+    footer .display {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 600;
+      font-size: 38px;
+      color: var(--cream);
+      margin: 0 0 8px;
+    }
+
+    footer p {
+      color: rgba(255, 246, 228, 0.7);
+      font-size: 15px;
+      margin: 0;
+    }
+
+    /* ---------- SCROLL REVEAL SYSTEM ---------- */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(46px) scale(0.97);
+      filter: blur(6px);
+      transition: opacity 1.05s cubic-bezier(.2, .7, .2, 1), transform 1.05s cubic-bezier(.2, .7, .2, 1), filter 1.05s cubic-bezier(.2, .7, .2, 1);
+    }
+
+    .fade-up.in {
+      opacity: 1;
+      transform: none;
+      filter: blur(0);
+    }
+
+    .stagger.in>* {
+      opacity: 0;
+      transform: translateY(30px) scale(0.96);
+      animation: staggerIn 0.85s cubic-bezier(.2, .7, .2, 1) forwards;
+    }
+
+    .stagger.in>*:nth-child(1) {
+      animation-delay: 0.05s;
+    }
+
+    .stagger.in>*:nth-child(2) {
+      animation-delay: 0.17s;
+    }
+
+    .stagger.in>*:nth-child(3) {
+      animation-delay: 0.29s;
+    }
+
+    .stagger.in>*:nth-child(4) {
+      animation-delay: 0.41s;
+    }
+
+    .stagger.in>*:nth-child(5) {
+      animation-delay: 0.53s;
+    }
+
+    .stagger.in>*:nth-child(6) {
+      animation-delay: 0.65s;
+    }
+
+    .stagger.in>*:nth-child(7) {
+      animation-delay: 0.77s;
+    }
+
+    .stagger.in>*:nth-child(8) {
+      animation-delay: 0.89s;
+    }
+
+    @keyframes staggerIn {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .hero-reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: heroIn 1.15s cubic-bezier(.2, .7, .2, 1) forwards;
+    }
+
+    .hero-reveal.d1 {
+      animation-delay: 0.05s;
+    }
+
+    .hero-reveal.d2 {
+      animation-delay: 0.3s;
+    }
+
+    .hero-reveal.d3 {
+      animation-delay: 0.5s;
+    }
+
+    .hero-reveal.d4 {
+      animation-delay: 0.7s;
+    }
+
+    .hero-reveal.d5 {
+      animation-delay: 0.9s;
+    }
+
+    @keyframes heroIn {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .to-top {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 90;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--maroon);
+      color: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--gold);
+      font-size: 18px;
+      text-decoration: none;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: none;
+    }
+
+    .arch,
+    .hero-frame {
+      will-change: transform;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up {
+        opacity: 1;
+        transform: none;
+        filter: none;
+        transition: none;
+      }
+
+      .stagger.in>* {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+
+      .hero-reveal {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+
+      .ornament-divider .line,
+      .ornament-divider svg {
+        transform: none;
+        opacity: 1;
+      }
+
+      .section-head h2::after {
+        transition: none;
+      }
+
+      .arch,
+      .hero-frame {
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <nav id="nav">
+    <div class="nav-mark">S &amp; A</div>
+    <button class="nav-toggle" id="navToggle">Menu</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#venue">Venue</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-frame"></div>
+    <svg class="arch hero-reveal d1" id="heroArch" viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20,130 L20,60 A90,90 0 0 1 200,60 L200,130" fill="none" stroke="#C9A227" stroke-width="2.5" />
+      <path d="M34,130 L34,64 A76,76 0 0 1 186,64 L186,130" fill="none" stroke="#C9A227" stroke-width="1.2" />
+
+      <defs>
+         <!-- Premium Champagne Gold -->
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#6B4A00"/>
+        <stop offset="18%" stop-color="#A67C00"/>
+        <stop offset="40%" stop-color="#E4C86A"/>
+        <stop offset="50%" stop-color="#FFF7D6"/>
+        <stop offset="60%" stop-color="#E4C86A"/>
+        <stop offset="82%" stop-color="#A67C00"/>
+        <stop offset="100%" stop-color="#6B4A00"/>
+    </linearGradient>
+
+    <!-- Moving Light -->
+    <linearGradient id="shineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="white" stop-opacity="0"/>
+        <stop offset="45%" stop-color="white" stop-opacity="0"/>
+        <stop offset="50%" stop-color="white" stop-opacity="1"/>
+        <stop offset="55%" stop-color="white" stop-opacity="0"/>
+        <stop offset="100%" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+
+    <mask id="shineMask">
+        <rect x="-220" y="0" width="220" height="140" fill="url(#shineGradient)">
+            <animate attributeName="x"
+                     from="-220"
+                     to="220"
+                     dur="2.8s"
+                     repeatCount="indefinite"/>
+        </rect>
+    </mask>
+      </defs>
+
+      <text x="110" y="68" text-anchor="middle" font-family="Cinzel, serif" font-size="40" font-weight="700"
+        fill="url(#goldGradient)">
+        S &amp; A
+      </text>
+
+      <text x="110" y="68" text-anchor="middle" font-family="Cinzel, serif" font-size="50" font-weight="700"
+        fill="#ffffff" opacity="0.9" mask="url(#shineMask)">
+        S &amp; A
+      </text>
+      <path d="M45,130 Q60,110 75,130" stroke="#0E4F49" stroke-width="1.4" fill="none" />
+      <path d="M145,130 Q160,110 175,130" stroke="#0E4F49" stroke-width="1.4" fill="none" />
+    </svg>
+    <span class="eyebrow hero-reveal d2">Together With Their Families</span>
+    <h1 class="hero-names hero-reveal d3">Santhoshkumar<span class="amp">&amp;</span>Anitha</h1>
+    <div class="hero-sub hero-reveal d4">Request The Honor Of Your Presence</div>
+    <div class="hero-date hero-reveal d4">Sunday · October 25th, 2026 · Ariyalur, Tamil Nadu</div>
+    <a href="#details" class="btn hero-reveal d5">View Ceremony Details</a>
+  </section>
+
+  <div class="ornament-divider" data-reveal>
+    <span class="line right"></span>
+    <svg viewBox="0 0 24 24">
+      <path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="#C9A227" />
+    </svg>
+    <span class="line left"></span>
+  </div>
+
+  <!-- OUR STORY -->
+  <section class="story" id="story">
+    <div class="wrap">
+      <div class="story-grid fade-up">
+        <div class="portrait">
+          <div class="portrait-inner">photo placeholder<br>— swap with your favorite —</div>
+        </div>
+        <div class="story-text">
+          <span class="eyebrow">Our Story</span>
+          <h2 style="margin:14px 0 22px; font-size:38px; color:#FFF6E4;">How It Began</h2>
+          <p>This is placeholder copy — swap in your own story here. Perhaps it began with families who had known each
+            other for years, or a meeting blessed by good fortune and the elders' word.</p>
+          <p>Through festivals shared, families united, and countless blessings from those who love them, Santhoshkumar
+            and Anitha now begin their journey together.</p>
+          <p class="signoff">We can't wait to celebrate with you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS / SCHEDULE -->
+  <section id="details">
+    <div class="wrap">
+      <div class="section-head fade-up" data-reveal>
+        <span class="eyebrow">Ceremony Schedule</span>
+        <h2>The Celebrations</h2>
+      </div>
+
+      <div class="day-label fade-up"><span>Engagement · Saturday, 24th October 2026 (Evening)</span></div>
+      <div class="schedule-list fade-up stagger">
+        <div class="schedule-item">
+          <div class="schedule-time">6:30 PM</div>
+          <div class="schedule-node">
+            <h3>Guests Arrive</h3>
+            <p>Please arrive by 6:30 PM for the engagement function.</p>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-time">7:00 PM</div>
+          <div class="schedule-node">
+            <h3>Engagement Ceremony</h3>
+            <p>Exchange of rings and blessings from both families.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-label fade-up"><span>Marriage · Sunday, 25th October 2026</span></div>
+      <div class="schedule-list fade-up stagger">
+        <div class="schedule-item">
+          <div class="schedule-time">6:00 AM</div>
+          <div class="schedule-node">
+            <h3>Guests Arrive</h3>
+            <p>Please arrive by 6:00 AM for the wedding ceremony.</p>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-time">6:30 AM</div>
+          <div class="schedule-node">
+            <h3>Marriage Ceremony</h3>
+            <p>The sacred rites take place at the auspicious hour.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ornament-divider" data-reveal>
+    <span class="line right"></span>
+    <svg viewBox="0 0 24 24">
+      <path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="#C9A227" />
+    </svg>
+    <span class="line left"></span>
+  </div>
+
+  <!-- VENUE -->
+  <section class="venue" id="venue">
+    <div class="wrap">
+      <div class="section-head fade-up" data-reveal>
+        <span class="eyebrow">Where To Find Us</span>
+        <h2>Venue &amp; Location</h2>
+      </div>
+      <div class="venue-grid fade-up">
+        <div class="venue-info">
+          <span class="eyebrow">Venue</span>
+          <h3>Tmt Thirumana Mandapam</h3>
+          <p>Elaiyur, Variyankaval,<br>Ariyalur – 621806,<br>Tamil Nadu</p>
+          <a class="btn"
+            href="https://www.google.com/maps/search/?api=1&query=Tmt+Thirumana+Mandapam%2C+Elaiyur%2C+Variyankaval%2C+Ariyalur+-+621806%2C+Tamil+Nadu"
+            target="_blank" rel="noopener">Open in Google Maps</a>
+        </div>
+        <div class="map-frame">
+          <iframe
+            src="https://www.google.com/maps?q=Tmt+Thirumana+Mandapam%2C+Elaiyur%2C+Variyankaval%2C+Ariyalur+-+621806%2C+Tamil+Nadu&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ornament-divider" data-reveal>
+    <span class="line right"></span>
+    <svg viewBox="0 0 24 24">
+      <path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="#C9A227" />
+    </svg>
+    <span class="line left"></span>
+  </div>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="wrap">
+      <div class="section-head fade-up" data-reveal>
+        <span class="eyebrow">A Few Keepsakes</span>
+        <h2>Gallery</h2>
+      </div>
+      <div class="gallery-grid fade-up stagger">
+        <figure title="Kalash">
+          <svg viewBox="0 0 100 100">
+            <path d="M35,40 Q35,20 50,20 Q65,20 65,40 L62,75 Q62,85 50,85 Q38,85 38,75 Z" fill="#C9A227" />
+            <ellipse cx="50" cy="40" rx="15" ry="6" fill="#7A1F35" />
+            <path d="M40,20 Q40,10 50,10 Q60,10 60,20" fill="none" stroke="#0E4F49" stroke-width="3" />
+            <path d="M28,22 Q35,8 42,22" fill="none" stroke="#0E4F49" stroke-width="3" />
+            <path d="M58,22 Q65,8 72,22" fill="none" stroke="#0E4F49" stroke-width="3" />
+          </svg>
+        </figure>
+        <figure title="Wedding Rings">
+          <svg viewBox="0 0 100 100">
+            <circle cx="38" cy="55" r="22" fill="none" stroke="#C9A227" stroke-width="6" />
+            <circle cx="62" cy="55" r="22" fill="none" stroke="#7A1F35" stroke-width="6" />
+          </svg>
+        </figure>
+        <figure title="Garland">
+          <svg viewBox="0 0 100 100">
+            <path d="M10,50 Q50,10 90,50 Q50,90 10,50 Z" fill="none" stroke="#0E4F49" stroke-width="2" />
+            <circle cx="20" cy="50" r="6" fill="#C9A227" />
+            <circle cx="35" cy="28" r="6" fill="#7A1F35" />
+            <circle cx="65" cy="28" r="6" fill="#C9A227" />
+            <circle cx="80" cy="50" r="6" fill="#7A1F35" />
+            <circle cx="65" cy="72" r="6" fill="#C9A227" />
+            <circle cx="35" cy="72" r="6" fill="#7A1F35" />
+          </svg>
+        </figure>
+        <figure title="Oil Lamp">
+          <svg viewBox="0 0 100 100">
+            <path d="M20,70 Q50,55 80,70 Q65,85 50,85 Q35,85 20,70 Z" fill="#C9A227" />
+            <path d="M46,55 Q50,30 54,55 Q58,45 52,38 Q46,45 46,55 Z" fill="#7A1F35" />
+          </svg>
+        </figure>
+        <figure title="Peacock Motif">
+          <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="45" r="14" fill="#0E4F49" />
+            <path d="M50,58 L50,80" stroke="#0E4F49" stroke-width="6" />
+            <path d="M20,30 Q35,10 50,32 Q65,10 80,30" fill="none" stroke="#C9A227" stroke-width="2" />
+            <circle cx="20" cy="30" r="3" fill="#7A1F35" />
+            <circle cx="50" cy="32" r="3" fill="#7A1F35" />
+            <circle cx="80" cy="30" r="3" fill="#7A1F35" />
+          </svg>
+        </figure>
+        <figure title="Turmeric &amp; Betel">
+          <svg viewBox="0 0 100 100">
+            <ellipse cx="50" cy="55" rx="26" ry="30" fill="#0E4F49" />
+            <path d="M50,30 Q40,50 50,80 Q60,50 50,30 Z" fill="#C9A227" opacity="0.5" />
+          </svg>
+        </figure>
+        <figure title="Temple Bell">
+          <svg viewBox="0 0 100 100">
+            <path d="M35,30 L65,30 L60,65 Q50,72 40,65 Z" fill="#C9A227" />
+            <rect x="45" y="18" width="10" height="14" fill="#7A1F35" />
+            <circle cx="50" cy="72" r="4" fill="#7A1F35" />
+          </svg>
+        </figure>
+        <figure title="Coconut &amp; Flowers">
+          <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="55" r="24" fill="#7A1F35" />
+            <path d="M40,32 Q50,10 60,32" fill="none" stroke="#0E4F49" stroke-width="3" />
+            <circle cx="50" cy="30" r="5" fill="#C9A227" />
+          </svg>
+        </figure>
+      </div>
+      <p class="gallery-note">Illustrative placeholders for now — swap in your own photographs anytime.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span class="eyebrow">Save The Date</span>
+    <div class="display">Santhoshkumar &amp; Anitha</div>
+    <p>October 25, 2026 · Tmt Thirumana Mandapam, Ariyalur · With love, always</p>
+  </footer>
+
+  <a href="#" class="to-top" id="toTop" aria-label="Back to top">&#8593;</a>
+
+  <script>
+    const nav = document.getElementById('nav');
+    const scrollProgress = document.getElementById('scrollProgress');
+    const toTop = document.getElementById('toTop');
+    const heroArch = document.getElementById('heroArch');
+    const heroFrame = document.querySelector('.hero-frame');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function onScroll() {
+      const scrollY = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
+
+      nav.classList.toggle('scrolled', scrollY > 20);
+      scrollProgress.style.width = pct + '%';
+      toTop.classList.toggle('visible', scrollY > 480);
+
+      if (!prefersReducedMotion) {
+        const heroHeight = window.innerHeight;
+        const t = Math.min(scrollY / heroHeight, 1);
+        if (heroArch) heroArch.style.transform = `translateY(${t * 34}px) scale(${1 - t * 0.08})`;
+        if (heroFrame) heroFrame.style.opacity = 1 - t * 0.6;
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    toTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: 0.4 });
+    document.querySelectorAll('[data-reveal], .section-head').forEach(el => revealObserver.observe(el));
+  </script>
+
+</body>
+
+</html>
