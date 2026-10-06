@@ -26,6 +26,19 @@
       box-sizing: border-box;
     }
 
+    .portrait-inner {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .portrait-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     html {
       scroll-behavior: smooth;
     }
@@ -244,9 +257,19 @@
       }
     }
 
+    @media (max-width: 700px) {
+      .arch {
+        width: min(65vw, 220px);
+      }
+    }
+
     .arch {
-      width: min(50vw, 260px);
-      margin-bottom: 6px;
+       width: min(65vw, 220px);
+  height: auto;
+  margin-top: -15px;
+  margin-bottom: 2px;
+  object-fit: contain;
+  display: block;
     }
 
     .hero .eyebrow {
@@ -486,7 +509,7 @@
     }
 
     .schedule-list {
-      max-width: 640px;
+      max-width: 720px;
       margin: 0 auto 70px;
       position: relative;
     }
@@ -498,9 +521,9 @@
     .schedule-list::before {
       content: "";
       position: absolute;
-      left: 96px;
-      top: 6px;
-      bottom: 6px;
+      left: 130px;
+      top: 0;
+      bottom: 0;
       width: 1px;
       background: var(--line);
     }
@@ -511,11 +534,46 @@
       }
     }
 
+    @media (max-width: 640px) {
+
+      .schedule-list {
+        max-width: 100%;
+      }
+
+      .schedule-list::before {
+        left: 78px;
+      }
+
+      .schedule-item {
+        grid-template-columns: 64px 1fr;
+        column-gap: 28px;
+        padding: 20px 0;
+      }
+
+      .schedule-time {
+        font-size: 12px;
+        padding-top: 3px;
+      }
+
+      .schedule-node::before {
+        display: none;
+      }
+
+      .schedule-node h3 {
+        font-size: 22px;
+      }
+
+      .schedule-node p {
+        font-size: 15px;
+      }
+    }
+
     .schedule-item {
       display: grid;
-      grid-template-columns: 96px 1fr;
-      gap: 28px;
+      grid-template-columns: 110px 1fr;
+      column-gap: 40px;
       padding: 22px 0;
+      position: relative;
     }
 
     @media (max-width:640px) {
@@ -531,11 +589,13 @@
       letter-spacing: 0.08em;
       color: var(--maroon);
       text-align: right;
-      padding-top: 4px;
+      padding-top: 3px;
+      white-space: nowrap;
     }
 
     .schedule-node {
       position: relative;
+      padding-left: 0;
     }
 
     .schedule-node::before {
@@ -552,13 +612,14 @@
 
     @media (max-width:640px) {
       .schedule-node::before {
-        left: -37px;
+        display: none;
       }
     }
 
     .schedule-node h3 {
       margin: 0 0 4px;
       font-size: 25px;
+      line-height: 1.2;
     }
 
     .schedule-node p {
@@ -650,8 +711,10 @@
     /* ---------- GALLERY ---------- */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      max-width: 760px;
+      margin: 0 auto;
     }
 
     @media (max-width: 760px) {
@@ -660,21 +723,43 @@
       }
     }
 
+    @media (max-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        max-width: 100%;
+      }
+
+      .gallery-grid figure {
+        padding: 5px;
+        border-width: 2px;
+      }
+    }
+
+
     .gallery-grid figure {
       margin: 0;
+      width: 100%;
+      aspect-ratio: 1 / 1;
       border: 3px solid var(--gold);
-      padding: 14px;
+      padding: 8px;
       background: #fff;
-      aspect-ratio: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.4s cubic-bezier(.2, .7, .2, 1), box-shadow 0.4s ease;
+      overflow: hidden;
+      display: block;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
     .gallery-grid figure:hover {
       transform: translateY(-6px);
       box-shadow: 0 14px 26px -14px rgba(122, 31, 53, 0.5);
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
     }
 
     .gallery-grid svg {
@@ -901,54 +986,10 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-frame"></div>
-    <svg class="arch hero-reveal d1" id="heroArch" viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
-      <path d="M20,130 L20,60 A90,90 0 0 1 200,60 L200,130" fill="none" stroke="#C9A227" stroke-width="2.5" />
-      <path d="M34,130 L34,64 A76,76 0 0 1 186,64 L186,130" fill="none" stroke="#C9A227" stroke-width="1.2" />
+    <!-- Logo update -->
+    <img class="arch hero-reveal d1" id="heroArch" src="images/SA_logo_HD_transparent_clean.png" alt="S & A Wedding Logo">
 
-      <defs>
-         <!-- Premium Champagne Gold -->
-    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#6B4A00"/>
-        <stop offset="18%" stop-color="#A67C00"/>
-        <stop offset="40%" stop-color="#E4C86A"/>
-        <stop offset="50%" stop-color="#FFF7D6"/>
-        <stop offset="60%" stop-color="#E4C86A"/>
-        <stop offset="82%" stop-color="#A67C00"/>
-        <stop offset="100%" stop-color="#6B4A00"/>
-    </linearGradient>
 
-    <!-- Moving Light -->
-    <linearGradient id="shineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="white" stop-opacity="0"/>
-        <stop offset="45%" stop-color="white" stop-opacity="0"/>
-        <stop offset="50%" stop-color="white" stop-opacity="1"/>
-        <stop offset="55%" stop-color="white" stop-opacity="0"/>
-        <stop offset="100%" stop-color="white" stop-opacity="0"/>
-    </linearGradient>
-
-    <mask id="shineMask">
-        <rect x="-220" y="0" width="220" height="140" fill="url(#shineGradient)">
-            <animate attributeName="x"
-                     from="-220"
-                     to="220"
-                     dur="2.8s"
-                     repeatCount="indefinite"/>
-        </rect>
-    </mask>
-      </defs>
-
-      <text x="110" y="68" text-anchor="middle" font-family="Cinzel, serif" font-size="40" font-weight="700"
-        fill="url(#goldGradient)">
-        S &amp; A
-      </text>
-
-      <text x="110" y="68" text-anchor="middle" font-family="Cinzel, serif" font-size="50" font-weight="700"
-        fill="#ffffff" opacity="0.9" mask="url(#shineMask)">
-        S &amp; A
-      </text>
-      <path d="M45,130 Q60,110 75,130" stroke="#0E4F49" stroke-width="1.4" fill="none" />
-      <path d="M145,130 Q160,110 175,130" stroke="#0E4F49" stroke-width="1.4" fill="none" />
-    </svg>
     <span class="eyebrow hero-reveal d2">Together With Their Families</span>
     <h1 class="hero-names hero-reveal d3">Santhoshkumar<span class="amp">&amp;</span>Anitha</h1>
     <div class="hero-sub hero-reveal d4">Request The Honor Of Your Presence</div>
@@ -969,15 +1010,22 @@
     <div class="wrap">
       <div class="story-grid fade-up">
         <div class="portrait">
-          <div class="portrait-inner">photo placeholder<br>— swap with your favorite —</div>
+          <div class="portrait-inner">
+            <img src="images/TempleStep.jpg" alt="Santhoshkumar and Anitha">
+          </div>
         </div>
         <div class="story-text">
           <span class="eyebrow">Our Story</span>
           <h2 style="margin:14px 0 22px; font-size:38px; color:#FFF6E4;">How It Began</h2>
-          <p>This is placeholder copy — swap in your own story here. Perhaps it began with families who had known each
-            other for years, or a meeting blessed by good fortune and the elders' word.</p>
-          <p>Through festivals shared, families united, and countless blessings from those who love them, Santhoshkumar
-            and Anitha now begin their journey together.</p>
+          <p>Some beautiful journeys begin with a simple meeting, and some are brought together through the love,
+            blessings, and wishes of two families.</p>
+          <p>The journey of Santhoshkumar and Anitha is one such beautiful beginning. With the blessings of their
+            families and the love of those closest to them, two hearts have found their way toward a lifetime of
+            togetherness.</p>
+          <p>As they take this wonderful step into a new chapter, they look forward to creating countless memories
+            filled with love, laughter, understanding, and happiness.</p>
+          <p>With grateful hearts, they invite you to be a part of their special day and bless their journey together.
+          </p>
           <p class="signoff">We can't wait to celebrate with you.</p>
         </div>
       </div>
@@ -1080,70 +1128,39 @@
         <h2>Gallery</h2>
       </div>
       <div class="gallery-grid fade-up stagger">
-        <figure title="Kalash">
-          <svg viewBox="0 0 100 100">
-            <path d="M35,40 Q35,20 50,20 Q65,20 65,40 L62,75 Q62,85 50,85 Q38,85 38,75 Z" fill="#C9A227" />
-            <ellipse cx="50" cy="40" rx="15" ry="6" fill="#7A1F35" />
-            <path d="M40,20 Q40,10 50,10 Q60,10 60,20" fill="none" stroke="#0E4F49" stroke-width="3" />
-            <path d="M28,22 Q35,8 42,22" fill="none" stroke="#0E4F49" stroke-width="3" />
-            <path d="M58,22 Q65,8 72,22" fill="none" stroke="#0E4F49" stroke-width="3" />
-          </svg>
+        <figure>
+          <img src="images/Image 1.jpg" alt="Santhoshkumar and Anitha">
         </figure>
-        <figure title="Wedding Rings">
-          <svg viewBox="0 0 100 100">
-            <circle cx="38" cy="55" r="22" fill="none" stroke="#C9A227" stroke-width="6" />
-            <circle cx="62" cy="55" r="22" fill="none" stroke="#7A1F35" stroke-width="6" />
-          </svg>
+
+        <figure>
+          <img src="images/Image 2.jpg" alt="Santhoshkumar and Anitha">
         </figure>
-        <figure title="Garland">
-          <svg viewBox="0 0 100 100">
-            <path d="M10,50 Q50,10 90,50 Q50,90 10,50 Z" fill="none" stroke="#0E4F49" stroke-width="2" />
-            <circle cx="20" cy="50" r="6" fill="#C9A227" />
-            <circle cx="35" cy="28" r="6" fill="#7A1F35" />
-            <circle cx="65" cy="28" r="6" fill="#C9A227" />
-            <circle cx="80" cy="50" r="6" fill="#7A1F35" />
-            <circle cx="65" cy="72" r="6" fill="#C9A227" />
-            <circle cx="35" cy="72" r="6" fill="#7A1F35" />
-          </svg>
+
+        <figure>
+          <img src="images/Image 3.jpg" alt="Santhoshkumar and Anitha">
         </figure>
-        <figure title="Oil Lamp">
-          <svg viewBox="0 0 100 100">
-            <path d="M20,70 Q50,55 80,70 Q65,85 50,85 Q35,85 20,70 Z" fill="#C9A227" />
-            <path d="M46,55 Q50,30 54,55 Q58,45 52,38 Q46,45 46,55 Z" fill="#7A1F35" />
-          </svg>
+
+        <figure>
+          <img src="images/Image 4.jpg" alt="Santhoshkumar and Anitha">
         </figure>
-        <figure title="Peacock Motif">
-          <svg viewBox="0 0 100 100">
-            <circle cx="50" cy="45" r="14" fill="#0E4F49" />
-            <path d="M50,58 L50,80" stroke="#0E4F49" stroke-width="6" />
-            <path d="M20,30 Q35,10 50,32 Q65,10 80,30" fill="none" stroke="#C9A227" stroke-width="2" />
-            <circle cx="20" cy="30" r="3" fill="#7A1F35" />
-            <circle cx="50" cy="32" r="3" fill="#7A1F35" />
-            <circle cx="80" cy="30" r="3" fill="#7A1F35" />
-          </svg>
+
+        <figure>
+          <img src="images/Image 5.jpg" alt="Santhoshkumar and Anitha">
         </figure>
-        <figure title="Turmeric &amp; Betel">
-          <svg viewBox="0 0 100 100">
-            <ellipse cx="50" cy="55" rx="26" ry="30" fill="#0E4F49" />
-            <path d="M50,30 Q40,50 50,80 Q60,50 50,30 Z" fill="#C9A227" opacity="0.5" />
-          </svg>
+
+        <figure>
+          <img src="images/Image 6.jpg" alt="Santhoshkumar and Anitha">
         </figure>
-        <figure title="Temple Bell">
-          <svg viewBox="0 0 100 100">
-            <path d="M35,30 L65,30 L60,65 Q50,72 40,65 Z" fill="#C9A227" />
-            <rect x="45" y="18" width="10" height="14" fill="#7A1F35" />
-            <circle cx="50" cy="72" r="4" fill="#7A1F35" />
-          </svg>
+
+        <figure>
+          <img src="images/Image 7.jpg" alt="Santhoshkumar and Anitha">
         </figure>
-        <figure title="Coconut &amp; Flowers">
-          <svg viewBox="0 0 100 100">
-            <circle cx="50" cy="55" r="24" fill="#7A1F35" />
-            <path d="M40,32 Q50,10 60,32" fill="none" stroke="#0E4F49" stroke-width="3" />
-            <circle cx="50" cy="30" r="5" fill="#C9A227" />
-          </svg>
+
+        <figure>
+          <img src="images/Image 8.jpg" alt="Santhoshkumar and Anitha">
         </figure>
       </div>
-      <p class="gallery-note">Illustrative placeholders for now — swap in your own photographs anytime.</p>
+      <p class="gallery-note">A few beautiful moments from our journey together.</p>
     </div>
   </section>
 
